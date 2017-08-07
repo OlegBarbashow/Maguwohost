@@ -3,10 +3,10 @@ body{
 }
 
 /* sprite 1x*/
-.stitches-sprite(@x: 0, @y: 0, @width: 0, @height: 0) {
-    background-position: @x @y;
-    width: @width;
-    height: @height;
+.stitches-sprite($x: 0, $y: 0, $width: 0, $height: 0) {
+    background-position: $x $y;
+    width: $width;
+    height: $height;
 }
 
 .sprite {
