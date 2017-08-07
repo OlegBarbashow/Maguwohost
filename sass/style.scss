@@ -1,97 +1,10 @@
-// 1. Перемнные
-$font-color: red;
-$font-size: 16px;
+@import "normalize";
 
-p{
-  font-size: $font-size;
-  line-height: $font-size * 2;
-}
+@import "mixins";
 
+@import "variabels";
 
-// 2. Вложенность(позволяет не писать имя всего класса)
-.class{
-  font-size: 20px;
+@import "scaffolding";
 
-  span{ // Правила для .class span{} если на css
-    font-size: 10px;
-  }
-}
+@import "sprite";
 
-
-.block{
-  &__element{ // & - подставит имя класса
-    font-size: 10px;
-  }
-
-  &--mod{
-    font-size: 20px;
-  }
-}
-
-
-// 3. Импорт
-//@import "some-file.scss";
-
-
-// 4. Миксины
-// Ведут себя как переменные, могут быть с параметрами и без
-//Миксин без парамметров
-@mixin font-style(){ // Создание через ключевое слово @mixin
-  font-size: 14px;
-  font-weight: bold;
-  color: red;
-}
-
-p{
-  @include font-style(); // Вызов через ключевое слово @include
-}
-
-//Миксин с парамметрами
-@mixin font-style2($f-size, $f-weight, $f-color){ // Создание через ключевое слово @mixin
-  font-size: $font-size;
-  font-weight: $f-weight;
-  color: $font-color;
-}
-
-h1{
-  @include font-style2(14px, bold, blue); // можно вставлять переменные в параметры
-}
-
-
-// 4. Extend
-// не ррекомендуется
-
-
-// 5. Матемматические операции
-$math = 3*15px;
-// Доступны элементарные математические операции
-
-
-// 6. Условные выражения
-@mixin color($status){ // Здесь в миксине
-  @if $status == error{
-    color: red;
-  }@else if $status == ok{
-    color: green;
-  }@else{
-    color: black;
-  }
-}
-
-
-// 7. Циклы
-@for $i from 1 to 12{
-  .col-#{$i}{ // .col-1, .col-2, ...
-    width: 100% / 12 * $i;
-  }
-}
-
-
-// 8. Функции
-@function column-width($number){
-  @return 100% / 12 * $number;
-}
-
-.column{
-  width: column-width(4);
-}
